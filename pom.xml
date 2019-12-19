@@ -9,6 +9,13 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
     <developers>
         <developer>
             <name>Zhenya</name>
@@ -24,60 +31,58 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>RELEASE</version>
-            <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
-        <dependency>
+         <dependency>
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>
             <version>1.4.0</version>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.github.seancfoley</groupId>
             <artifactId>ipaddress</artifactId>
             <version>5.1.0</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-
-                <version>3.8.1</version>
-                <configuration>
-
-                    <source>8</source>
-                    <target>8</target>
-                    <encoding>utf-8</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.2</version>
-                <configuration>
-
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>ru.ssspokd.testOtr.Application</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-        </plugins>
+    <build><plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.1</version>
+            <executions>
+                <execution>
+                    <id>unpack-dependencies</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>unpack-dependencies</goal>
+                    </goals>
+                    <configuration>
+                        <excludeScope>system</excludeScope>
+                        <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>2.3.2</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                        <mainClass>ru.ssspokd.testOtr.Application</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+    </plugins>
     </build>
 
 </project>
