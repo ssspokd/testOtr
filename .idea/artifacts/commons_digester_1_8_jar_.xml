@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="commons-digester-1_8_jar_">
+    <output-path>$PROJECT_DIR$/out/artifacts/commons_digester_1_8_jar_</output-path>
+    <root id="archive" name="commons-digester-1_8_jar_.jar">
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-digester/commons-digester/1.8/commons-digester-1.8.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
