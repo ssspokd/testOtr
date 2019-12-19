@@ -3,11 +3,7 @@ import inet.ipaddr.IPAddressSeqRange;
 import inet.ipaddr.IPAddressString;
 import inet.ipaddr.ipv4.IPv4AddressSeqRange;
 import org.apache.commons.validator.routines.InetAddressValidator;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -19,26 +15,19 @@ class IPtest {
     private String ip3 = "192.168.1.s";
     private String ip4 = "192.168.0.s";
 
-    private List<String> resulIP;
-
-    @BeforeEach
-    void init(){
-        resulIP = new ArrayList<>();
-    }
-
     @Test
-    private void getIPTestTrue(){
+    public void getIPTestTrue(){
         assertTrue(validateIP(ip1));
         assertTrue(validateIP(ip2));
     }
     @Test
-    private void getIPTestFalse() {
+    public void getIPTestFalse() {
         assertFalse(validateIP(ip3));
         assertFalse(validateIP(ip4));
     }
 
     @Test
-    private void getIpEmptuStr(){
+    public void getIpEmptuStr(){
         assertFalse(validateIP(""));
         assertFalse(validateIP(""));
     }
@@ -46,7 +35,7 @@ class IPtest {
 
 
     @Test
-    private void printIP(){
+    public void printIP(){
         IPAddressString ipAddressString1 =  new IPAddressString(ip1);
         IPAddressString ipAddressString2 =  new IPAddressString(ip2);
         IPAddress addr1 = ipAddressString1.getAddress(),
